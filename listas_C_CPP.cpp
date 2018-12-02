@@ -249,7 +249,7 @@ void chequearNode(Node* nodo){
 int contarElementos(List* lista){
     chequearLista(lista);
     Node* auxiliar = lista->head;
-    int contador = 1; //el planteamiento dice que la posicion inicial de la lista es la 1 y no la 0 (como en el caso de los vectores)
+    int contador = 0;
     while(auxiliar!= lista->tail){
         contador+=1;
         auxiliar = auxiliar->next;
