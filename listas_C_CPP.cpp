@@ -1,6 +1,6 @@
 
 /******************************************************************************
-  CÓDIGO DE LISTAS en C/C++ A PARTIR DE NODOS USANDO STRUCTS. Por: byDavid360
+  CÃ“DIGO DE LISTAS en C/C++ A PARTIR DE NODOS USANDO STRUCTS. Por: byDavid360
 ******************************************************************************/
 
 #include<stdio.h>
@@ -15,7 +15,7 @@ struct Node { //estructura donde definimos el nodo con su valor de tipo T y su p
     Node * next;
 };
 
-struct List{ //estructura donde definimos la lista que tendrá un head, un tail y un numero de elementos
+struct List{ //estructura donde definimos la lista que tendrÃ¡ un head, un tail y un numero de elementos
     Node* head;
     Node* tail;
     int numElements;
@@ -31,7 +31,6 @@ void recorrerLista (List* lista); //funcion que recorre una lista
 bool borradoInicio (List* lista); //funcion que borra por el inicio (eficiente)
 bool borradoFinal(List* lista); //funcion que borra por el final (no eficiente)
 int buscarElemento(List* lista, T posicion); //funcion que devuelve que elemento esta en el nodo posicion
-bool borrarElementoDePosicion(List* lista, T posicion); //funcion que recibiendo una posicion, la busca y borra su elemento
 void insertarDespuesElemento(List* lista, T valor, T nuevo); //funcion que inserta el elemento nuevo despues de valor
 int contarElementos(List* lista); //funcion que te cuenta los elementos de una lista
 
@@ -114,7 +113,7 @@ int main(){
     cout<<endl<<"Elige un elemento a insertar: ";
     cin>> elemento;
 
-    cout<<endl<<"¿Despues de cual? : ";
+    cout<<endl<<"Â¿Despues de cual? : ";
     cin>>despues;
     insertarDespuesElemento(lista3,despues,elemento);
     cout<<endl<<"La lista queda de la forma: ";
@@ -160,7 +159,7 @@ void insertarFinal(List* lista, T valor){
     chequearLista(lista);
     Node* nuevoNodo = lista->tail; // nodo apunta a donde apunta el tail (el centinela original, nos estamos apropiando de el)
     nuevoNodo ->value = valor; //le damos el valor
-    nuevoNodo->next = crearNode('-', NULL); //el centinela antiguo, que es el nuevo nodo, apunta a uno nuevo que será el nuevo centinela
+    nuevoNodo->next = crearNode('-', NULL); //el centinela antiguo, que es el nuevo nodo, apunta a uno nuevo que serÃ¡ el nuevo centinela
     lista->tail = nuevoNodo->next; //el tail ahora apunta al nuevo centinela y no al antiguo ya que el antiguo no es el final de la lista
     lista->numElements++;
 }
@@ -216,18 +215,6 @@ int buscarElemento(List* lista, T posicion){
 }
 
 
-bool borrarElementoDePosicion(List* lista, T posicion){
-    chequearLista(lista);
-    Node* auxiliar = lista->head;
-    for(int i = 1; i< posicion; i++){
-        auxiliar = auxiliar->next;
-    }
-    free(auxiliar);
-    lista->numElements--;
-    return true;
-}
-
-
 void insertarDespuesElemento(List* lista, T valor, T nuevo){
     chequearLista(lista);
     Node* actual = lista->head;
@@ -237,7 +224,7 @@ void insertarDespuesElemento(List* lista, T valor, T nuevo){
     if(actual->value == valor){ //si hemos llegado a su valor, el nodo next creamos un nodo con valor nuevo y apuntando al siguiente
         actual->next = crearNode(nuevo, actual->next);
     }
-    else if (actual == lista->tail){ //si hemos llegado al final (por no existir el numero parametro) lo añadimos al final de la lista con la funcion insertarFinal
+    else if (actual == lista->tail){ //si hemos llegado al final (por no existir el numero parametro) lo aÃ±adimos al final de la lista con la funcion insertarFinal
         insertarFinal(lista,nuevo);
     }
     lista->numElements++;
@@ -262,7 +249,7 @@ void chequearNode(Node* nodo){
 int contarElementos(List* lista){
     chequearLista(lista);
     Node* auxiliar = lista->head;
-    int contador = 1; //el planteamiento la posicion inicial de la lista como la 1 y no la 0 (como en el caso de los vectores)
+    int contador = 1; //el planteamiento dice que la posicion inicial de la lista es la 1 y no la 0 (como en el caso de los vectores)
     while(auxiliar!= lista->tail){
         contador+=1;
         auxiliar = auxiliar->next;
